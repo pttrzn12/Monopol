@@ -1,0 +1,9 @@
+class chance{
+ void draw(int s,int p,int mny){
+ if(s==1 && p==7)
+   int c=int(random(1,17));
+  if(c==1){
+  mny+=200;
+  }
+ }
+}
