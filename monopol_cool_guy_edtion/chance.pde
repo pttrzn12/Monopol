@@ -1,28 +1,98 @@
 class chance {
   Rutor rutor=new Rutor();
-  chans={1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+  int [] chans={1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+  int [] nychans={1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+  int size=chans.length;
   void draw(int s, int p, int q) {
     if (s==0 && p==7 || s==2 && p==2 || s==3 && p==6 ) {
       int size=chans.length;
-      int f=int(random(0, size+1));
-      int position= chans[f];
-      while (chans[f]==0) {
-        f=int(random(0, size+1));
-        position= chans[f];
+      int f=int(random(0, size-1));
+      //cardtype
+      int ct= chans[f];
+      int k=0;
+      for ( int x=0; x<size; x++) {
+        if (chans[x]!=0) {
+          k+=1;
+        }
       }
-      if(f==1){
-        
+      if (k==0) {
+        //blanda    
+        for ( int v=0; v<size; v++) {
+          chans[v]=nychans[v];
+        }
+      }
+      if (k!=0) {
+        //dra ett kort
+        // kollar om kortet finns 
+        while (ct==0) {
+          f=int(random(0, size-1));
+          ct= chans[f];
+        }
+        if (ct!=0) {
+
+          chans[f]=0;
+
+
+          if (ct==1) {
+            advanceToBoardwalk(q);
+          }
+          if (ct==2) {
+            advanceToGo(q);
+          }
+          if (ct==3) {
+            advanceToIllinoisAvenue(q, s, p);
+          }
+          if (ct==4) {
+            advanceToStCharlesPlace(q, s, p);
+          }
+          if (ct==5) {
+            advanceToNearestRailroad(q, s, p);
+          }
+          if (ct==6) {
+            advanceTheTokenToNearestUtility(q, s, p);
+          }
+          if (ct==7) {
+            bankPaysYouDividend(q);
+          }
+          if (ct==8) {
+            getOutOfJailFree(q);
+          }
+          if (ct==9) {
+            goBack3Spaces(q, s, p);
+          }
+          if (ct==10) {
+            goToJail(q);
+          }
+          if (ct==11) {
+            makeGeneralRepairsOnAllYourProperty(q);
+          }
+          if (ct==12) {
+            speedingFine(q);
+          }
+          if (ct==13) {
+            takeATripToReadingRailroad(q, s, p);
+          }
+          if (ct==14) {
+            youHaveBeenElectedChairmanOfTheBoard(q);
+          }
+          if (ct==15) {
+            youHaveBeenElectedChairmanOfTheBoard(q);
+          }
+          if (ct==16) {
+            yourBuildingLoanMatures(q);
+          }
+        }
       }
     }
   }
 
   void advanceToBoardwalk(int playerNumber) {
-    //Ändra spelarens position till normanstorg
+    //Ändra spelarens ct till normanstorg
     move(playerNumber, 3, 9);
   }
 
   void advanceToGo(int playerNumber) {
-    //Ändra spelarens position till Gå
+    //Ändra spelarens ct till Gå
     addmny(playerNumber, 4000);
     move(playerNumber, 0, 0);
   }
@@ -32,7 +102,7 @@ class chance {
       addmny(playerNumber, 4000);
     }
     move(playerNumber, 2, 4);
-    //Ändra spelarens position till hamngatan
+    //Ändra spelarens ct till hamngatan
     //Om spelaren passerar gå (ev. göra en allmän funktion för att checka detta...) addmny(playerNumber, 200);
   }
 
@@ -41,7 +111,7 @@ class chance {
       addmny(playerNumber, 4000);
     }
     move(playerNumber, 1, 1);
-    //Ändra spelarens position till "St. Eriksgata
+    //Ändra spelarens ct till "St. Eriksgata
     //Om spelaren passerar gå... addmny(playerNumber, 200);
   }
 
@@ -133,7 +203,7 @@ class chance {
         addmny(playerNumber, -4000);
       }
     }
-    //Ändra spelarens position till närmaste järnväg
+    //Ändra spelarens ct till närmaste järnväg
     //Om järnvägen är oägd, ge spelaren valet att köpa den från banken
     //Om järnvägen är ägd av någon ska spelaren betala dubbel hyra till ägaren
 
@@ -175,7 +245,7 @@ class chance {
         addmny(playerNumber, -4000);
       }
     }
-    //Ändra spelarens position till närmaste "utility"
+    //Ändra spelarens ct till närmaste "utility"
     //Om rutan är oägd, ge spelaren valet att köpa den från banken
     //Om rutan är ägd, slå tärningarna och betala ägaren 10 gånger värdet av tärningskastet
   }
@@ -210,7 +280,7 @@ class chance {
     if (p<3 && s==0) {
       move(playerNumber, 4, 7+p);
     }
-    //Ändra spelarens position till 3 rutor bakåt
+    //Ändra spelarens ct till 3 rutor bakåt
   }
 
   void goToJail(int playerNumber) {
@@ -226,7 +296,7 @@ class chance {
     if (playerNumber==4) {
       jail4=true;
     }
-    //Ändra spelarens position till fängelset
+    //Ändra spelarens ct till fängelset
     //Se till att reglerna för att vara i fängelset gäller
   }
 
@@ -253,7 +323,7 @@ class chance {
   }
 
   void takeATripToReadingRailroad(int playerNumber, int s, int p) {
-    //Ändra spelarens position till "Södra Railroad"
+    //Ändra spelarens ct till "Södra Railroad"
     //Om spelaren passerar Gå, addmny(playerNumber, 200);
     move(playerNumber, 0, 5);
     if (checkgo(s, p, 0, 5)==1) {

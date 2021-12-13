@@ -40,6 +40,7 @@ class hyra {
       }
     }
     //vanliga tomter
+    print("wfewe");
     if (info.hyra[s][p][0]!=0) {
       if(rutor.whoowns(s,p)!=5 && rutor.whoowns(s,p)!=playerNumber){
       int owner=rutor.whoowns(s, p);

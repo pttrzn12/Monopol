@@ -28,11 +28,12 @@ Boolean freejail2=false;
 Boolean freejail3=false;
 Boolean freejail4=false;
 void setup() {
-  size(1000, 1000);
+  size(1500, 1000);
   output = createWriter("2Stats.txt");
   img = loadImage("Monopol.jpg");
 }
 void draw() {
+  background(252);
   image(img, 0, 0);
   /*  p1.play();
    p2.play();
@@ -40,8 +41,8 @@ void draw() {
   p4.play();
   /*print("      MP1:"+MoneyP1);
    print("      MP2:"+MoneyP2);
-   print("      MP3:"+MoneyP3);
-   print("      MP4:"+MoneyP4);*/
+   print("      MP3:"+MoneyP3);*/
+   print("      MP4:"+MoneyP4);
   output.println(MoneyP4);
   output.flush();
 }
