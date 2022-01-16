@@ -4,6 +4,7 @@ Player1 p1=new Player1();
 Player2 p2=new Player2();
 Player3 p3=new Player3();
 Player4 p4=new Player4();
+Stats sts= new Stats();
 Rutor rutor=new Rutor();
 info info= new info();
 flip flip= new flip();
@@ -33,8 +34,9 @@ void setup() {
   img = loadImage("Monopol.jpg");
 }
 void draw() {
-  background(252);
+  background(210, 229, 210);
   image(img, 0, 0);
+  sts.draw();
   /*  p1.play();
    p2.play();
    p3.play();*/
@@ -135,7 +137,12 @@ void addmny(int q, int a) {
     }
   }
 }
-
+int checkstrat(int playerNumber, int pos){
+int value=0;
+if(playerNumber==1){
+value=strat1[pos]
+}
+}
 
 int checkmny(int playerNumber) {
   int r=0;

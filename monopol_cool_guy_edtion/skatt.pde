@@ -4,12 +4,12 @@ class skatt {
     if (s==0 && p==2) {
       //lägg till inkomstskatt
       int skatt=0;
-      for ( int y=0; y<4; s++) {
-        for ( int x=0; x<10; s++) {
+      for ( int y=0; y<4; y++) {
+        for ( int x=0; x<10; x++) {
           if ( rutor.ownd[y][x]==playerNumber) {
-            skatt+=info.kostnad[s][p][0];
-            if (rutor.bygg[s][p]>0) {
-              skatt+=rutor.bygg[s][p]*info.kostnad[s][p][1];
+            skatt+=info.kostnad[y][x][0];
+            if (rutor.bygg[y][x]>0) {
+              skatt+=rutor.bygg[y][x]*info.kostnad[s][p][1];
             }
           }
         }

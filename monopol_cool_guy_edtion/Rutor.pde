@@ -69,12 +69,13 @@ class Rutor {
     return 5;
   }
   void buy(int playerNumber, int s, int p) {
+  if(checkstrat(0)==0){
     if (rutor.whoowns(s, p)==5) {
       if (info.kostnad[s][p][0]!=0) {
         if (checkmny(playerNumber)>=info.kostnad[s][p][0]) {
           addmny(playerNumber, -1*info.kostnad[s][p][0]);
           rutor.ownd[s][p]=playerNumber;
-        }
+        }]
       }
     }
   }
